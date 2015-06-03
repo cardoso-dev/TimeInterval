@@ -35,8 +35,8 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.DATE,7);
-			if( !cal.getTime().after(end) ){
-				currWeek=new Week(cal.getTime());
+			currWeek=new Week(cal.getTime());
+			if( !currWeek.getStartDate().after(end) ){
 				if( !currWeek.equals(endWeek) ){
 					weeks.add(currWeek);
 				}else{
@@ -81,7 +81,8 @@ public class CalculateIntervals {
 				cal.set(Calendar.DATE,1);
 				maxDay=15;
 			}
-			if( !cal.getTime().after(end) ){
+			currFortNight=new FortNight(cal.getTime());
+			if( !currFortNight.getStartDate().after(end) ){
 				currFortNight=new FortNight(cal.getTime());
 				if( !currFortNight.equals(endFortNight) ){
 					fortNights.add(currFortNight);
@@ -119,8 +120,8 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.MONTH,1);
-			if( !cal.getTime().after(end) ){
-				currMonth=new Month(cal.getTime());
+			currMonth=new Month(cal.getTime());
+			if( !currMonth.getStartDate().after(end) ){
 				if( !currMonth.equals(endMonth) ){
 					months.add(currMonth);
 				}else{
@@ -155,8 +156,8 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.MONTH,2);
-			if( !cal.getTime().after(end) ){
-				currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);
+			currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);
+			if( !currBimester.getStartDate().after(end) ){
 				if( !currBimester.contains(end) ){
 					bimesters.add(currBimester);
 				}else{
@@ -191,8 +192,8 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.MONTH,3);
-			if( !cal.getTime().after(end) ){
-				currTrimester=new Trimester(cal.getTime(),dateLeadsFirstMonth);
+			currTrimester=new Trimester(cal.getTime(),dateLeadsFirstMonth);
+			if( !currTrimester.getStartDate().after(end) ){
 				if( !currTrimester.contains(end) ){
 					trimesters.add(currTrimester);
 				}else{
@@ -227,8 +228,8 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.MONTH,6);
-			if( !cal.getTime().after(end) ){
-				currSemester=new Semester(cal.getTime(),dateLeadsFirstMonth);
+			currSemester=new Semester(cal.getTime(),dateLeadsFirstMonth);
+			if( !currSemester.getStartDate().after(end) ){
 				if( !currSemester.contains(end) ){
 					semesters.add(currSemester);
 				}else{

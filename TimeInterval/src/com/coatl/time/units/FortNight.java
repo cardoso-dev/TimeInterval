@@ -32,6 +32,8 @@ public class FortNight extends TimeUnit{
 		cal.set(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),
 				cal.get(Calendar.DAY_OF_MONTH)<=15?15:cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		endDate=cal.getTime();
+		unitName="Quincena";
+		unitDescription=fortNightOfMonth+" quincena "+getStartMonthName()+" "+getStartYear();
 	}
 
 	public int getFortNightOfMonth() {

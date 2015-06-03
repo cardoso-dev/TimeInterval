@@ -32,6 +32,8 @@ public class Week extends TimeUnit{
 		startDate=cal.getTime();
 		cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		endDate=cal.getTime();
+		unitName="Semana";
+		unitDescription=weekOfMonth+" semana "+getStartMonthName()+" "+getStartYear();
 	}
 
 	public int getWeekOfYear() {

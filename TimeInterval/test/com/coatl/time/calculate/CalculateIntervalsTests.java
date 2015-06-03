@@ -44,7 +44,7 @@ public class CalculateIntervalsTests extends TestCase{
 		Calendar cal=Calendar.getInstance();
 		Date start;
 		Date end;
-		try {
+		try {			
 			cal.set(2012,3,15);
 			start=cal.getTime();
 			cal.set(2012,7,21);
@@ -52,7 +52,7 @@ public class CalculateIntervalsTests extends TestCase{
 			weeksFl=calc.calculateWeeksBetween(start, end, false);
 			weeksTr=calc.calculateWeeksBetween(start, end, true);
 			assertEquals(18,weeksFl.size());
-			assertEquals(19,weeksTr.size());
+			assertEquals(20,weeksTr.size());
 			cal.set(2012,4,16);
 			start=cal.getTime();
 			wTest=new Week(start);			

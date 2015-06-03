@@ -38,6 +38,8 @@ public class Trimester extends TimeUnit{
 		cal.add(Calendar.MONTH,2);
 		cal.set(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		endDate=cal.getTime();
+		unitName="Trimestre";
+		unitDescription="Trimestre "+getStartMonthName()+" "+getStartYear()+"-"+getEndMonthName()+" "+getEndMonthYear();
 	}
 
 	public boolean getDateLeadsFirstMonth(){

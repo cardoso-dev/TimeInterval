@@ -38,6 +38,8 @@ public class Semester extends TimeUnit{
 		cal.add(Calendar.MONTH,5);
 		cal.set(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		endDate=cal.getTime();
+		unitName="Semestre";
+		unitDescription="Semestre "+getStartMonthName()+" "+getStartYear()+"-"+getEndMonthName()+" "+getEndMonthYear();
 	}
 
 	public boolean getDateLeadsFirstMonth(){
