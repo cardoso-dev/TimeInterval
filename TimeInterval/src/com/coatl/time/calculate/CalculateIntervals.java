@@ -156,7 +156,7 @@ public class CalculateIntervals {
 		}
 		do{
 			cal.add(Calendar.MONTH,2);
-			currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);
+			currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);						
 			if( !currBimester.getStartDate().after(end) ){
 				if( !currBimester.contains(end) ){
 					bimesters.add(currBimester);

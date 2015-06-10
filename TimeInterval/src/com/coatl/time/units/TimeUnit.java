@@ -1,6 +1,7 @@
 package com.coatl.time.units;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TimeUnit {
@@ -35,13 +36,21 @@ public class TimeUnit {
 	}
 	
 	public String getStartYear(){
-		sdf=new SimpleDateFormat("YYYY");
-		return sdf.format(startDate);
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(startDate);
+		//sdf=new SimpleDateFormat("YYYY");
+		// ** for some very very very strange reason this returns wrong year (the next year) on last day of december
+		//return sdf.format(startDate);
+		return ""+cal.get(Calendar.YEAR);
 	}
 	
 	public String getEndMonthYear(){
-		sdf=new SimpleDateFormat("YYYY");
-		return sdf.format(endDate);
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(endDate);
+		//sdf=new SimpleDateFormat("dd/MM/YYYY");		
+		//return sdf.format(endDate); **
+		// ** for some very very very strange reason this returns wrong year (the next year) on last day of december
+		return ""+cal.get(Calendar.YEAR);
 	}
 	
 	public boolean equals(TimeUnit timeUnit){

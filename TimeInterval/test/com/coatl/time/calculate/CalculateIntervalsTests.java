@@ -294,6 +294,7 @@ public class CalculateIntervalsTests extends TestCase{
 		Date start;
 		Date end;
 		try {
+			
 			cal.set(2011,3,15);
 			start=cal.getTime();
 			cal.set(2013,7,21);
