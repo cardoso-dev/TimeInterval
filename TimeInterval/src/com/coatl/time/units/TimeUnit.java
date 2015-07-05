@@ -11,6 +11,7 @@ public class TimeUnit {
 	protected Date endDate;
 	protected String unitName;
 	protected String unitDescription;
+	protected int numOfPeriod;
 
 	public TimeUnit(){
 		startDate=null;
@@ -67,5 +68,14 @@ public class TimeUnit {
 
 	public String getUnitDescription() {
 		return unitDescription;
-	}	
+	}
+
+	public int getNumOfPeriod() {
+		return numOfPeriod;
+	}
+
+	public void setNumOfPeriod(int numOfPeriod) {
+		this.numOfPeriod = numOfPeriod;
+	}
+	
 }

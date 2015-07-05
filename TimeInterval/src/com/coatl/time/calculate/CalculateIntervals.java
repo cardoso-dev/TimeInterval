@@ -21,6 +21,7 @@ public class CalculateIntervals {
 		Week startWeek;
 		Week endWeek;
 		Week currWeek;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -31,17 +32,21 @@ public class CalculateIntervals {
 		endWeek=new Week(end);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && cal.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY) ){
+			startWeek.setNumOfPeriod(countPeriods);
+			countPeriods++;
 			weeks.add(startWeek);
 		}
 		do{
 			cal.add(Calendar.DATE,7);
 			currWeek=new Week(cal.getTime());
+			currWeek.setNumOfPeriod(countPeriods);
 			if( !currWeek.getStartDate().after(end) ){
 				if( !currWeek.equals(endWeek) ){
 					weeks.add(currWeek);
 				}else{
 					cal.setTime(end);
 					if( roundUp || (!roundUp && cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY) ){
+						endWeek.setNumOfPeriod(countPeriods);
 						weeks.add(endWeek);
 					}
 					flag=false; 
@@ -49,6 +54,7 @@ public class CalculateIntervals {
 			}else{ 
 				flag=false; 
 			}
+			countPeriods++;
 		}while(flag);
 		return weeks;
 	}
@@ -60,6 +66,7 @@ public class CalculateIntervals {
 		FortNight endFortNight;
 		FortNight currFortNight;
 		int maxDay;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -70,7 +77,9 @@ public class CalculateIntervals {
 		endFortNight=new FortNight(end);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && (cal.get(Calendar.DATE)==1||cal.get(Calendar.DATE)==16)) ){
+			startFortNight.setNumOfPeriod(countPeriods);
 			fortNights.add(startFortNight);
+			countPeriods++;
 		}
 		do{
 			if(cal.get(Calendar.DATE)<16){
@@ -82,13 +91,16 @@ public class CalculateIntervals {
 				maxDay=15;
 			}
 			currFortNight=new FortNight(cal.getTime());
+			currFortNight.setNumOfPeriod(countPeriods);
 			if( !currFortNight.getStartDate().after(end) ){
 				currFortNight=new FortNight(cal.getTime());
+				currFortNight.setNumOfPeriod(countPeriods);
 				if( !currFortNight.equals(endFortNight) ){
 					fortNights.add(currFortNight);
 				}else{
 					cal.setTime(end);					
 					if( roundUp || (!roundUp && cal.get(Calendar.DATE)==maxDay) ){
+						endFortNight.setNumOfPeriod(countPeriods);
 						fortNights.add(endFortNight);
 					}
 					flag=false; 
@@ -96,6 +108,7 @@ public class CalculateIntervals {
 			}else{ 
 				flag=false; 
 			}
+			countPeriods++;
 		}while(flag);
 		return fortNights;
 	}
@@ -106,6 +119,7 @@ public class CalculateIntervals {
 		Month startMonth;
 		Month endMonth;
 		Month currMonth;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -116,17 +130,21 @@ public class CalculateIntervals {
 		endMonth=new Month(end);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && cal.get(Calendar.DATE)==1) ){
+			startMonth.setNumOfPeriod(countPeriods);
 			months.add(startMonth);
+			countPeriods++;
 		}
 		do{
 			cal.add(Calendar.MONTH,1);
 			currMonth=new Month(cal.getTime());
+			currMonth.setNumOfPeriod(countPeriods);
 			if( !currMonth.getStartDate().after(end) ){
 				if( !currMonth.equals(endMonth) ){
 					months.add(currMonth);
 				}else{
 					cal.setTime(end);					
 					if( roundUp || (!roundUp && cal.get(Calendar.DATE)==cal.getActualMaximum(Calendar.DAY_OF_MONTH)) ){
+						endMonth.setNumOfPeriod(countPeriods);
 						months.add(endMonth);
 					}
 					flag=false; 
@@ -134,6 +152,7 @@ public class CalculateIntervals {
 			}else{ 
 				flag=false; 
 			}
+			countPeriods++;
 		}while(flag);
 		return months;
 	}
@@ -143,6 +162,7 @@ public class CalculateIntervals {
 		Calendar cal;
 		Bimester startBimester;
 		Bimester currBimester;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -152,11 +172,14 @@ public class CalculateIntervals {
 		startBimester=new Bimester(start,dateLeadsFirstMonth);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && cal.getTime().equals(startBimester.getStartDate())) ){
+			startBimester.setNumOfPeriod(countPeriods);
 			bimesters.add(startBimester);
+			countPeriods++;
 		}
 		do{
 			cal.add(Calendar.MONTH,2);
-			currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);						
+			currBimester=new Bimester(cal.getTime(),dateLeadsFirstMonth);
+			currBimester.setNumOfPeriod(countPeriods);
 			if( !currBimester.getStartDate().after(end) ){
 				if( !currBimester.contains(end) ){
 					bimesters.add(currBimester);
@@ -170,6 +193,7 @@ public class CalculateIntervals {
 			}else{
 				flag=false; 
 			}
+			countPeriods++;
 		}while(flag);
 		return bimesters;
 	}
@@ -179,6 +203,7 @@ public class CalculateIntervals {
 		Calendar cal;
 		Trimester startTrimester;
 		Trimester currTrimester;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -188,11 +213,14 @@ public class CalculateIntervals {
 		startTrimester=new Trimester(start,dateLeadsFirstMonth);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && cal.getTime().equals(startTrimester.getStartDate())) ){
+			startTrimester.setNumOfPeriod(countPeriods);
 			trimesters.add(startTrimester);
+			countPeriods++;
 		}
 		do{
 			cal.add(Calendar.MONTH,3);
 			currTrimester=new Trimester(cal.getTime(),dateLeadsFirstMonth);
+			currTrimester.setNumOfPeriod(countPeriods);
 			if( !currTrimester.getStartDate().after(end) ){
 				if( !currTrimester.contains(end) ){
 					trimesters.add(currTrimester);
@@ -203,6 +231,7 @@ public class CalculateIntervals {
 					}
 					flag=false; 
 				}
+				countPeriods++;
 			}else{ 
 				flag=false; 
 			}
@@ -215,6 +244,7 @@ public class CalculateIntervals {
 		Calendar cal;
 		Semester startSemester;
 		Semester currSemester;
+		int countPeriods=1;
 		boolean flag=true;
 		if( !startDateItsBefore(start,end) ){
 			throw new CoatlTimeStartDateException(start,end);
@@ -224,11 +254,14 @@ public class CalculateIntervals {
 		startSemester=new Semester(start,dateLeadsFirstMonth);
 		cal.setTime(start);
 		if( roundUp || (!roundUp && cal.getTime().equals(startSemester.getStartDate())) ){
+			startSemester.setNumOfPeriod(countPeriods);
 			semesters.add(startSemester);
+			countPeriods++;
 		}
 		do{
 			cal.add(Calendar.MONTH,6);
 			currSemester=new Semester(cal.getTime(),dateLeadsFirstMonth);
+			currSemester.setNumOfPeriod(countPeriods);
 			if( !currSemester.getStartDate().after(end) ){
 				if( !currSemester.contains(end) ){
 					semesters.add(currSemester);
@@ -242,6 +275,7 @@ public class CalculateIntervals {
 			}else{ 
 				flag=false; 
 			}
+			countPeriods++;
 		}while(flag);
 		return semesters;
 	}

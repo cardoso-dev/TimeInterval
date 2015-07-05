@@ -55,8 +55,10 @@ public class CalculateIntervalsTests extends TestCase{
 			assertEquals(20,weeksTr.size());
 			cal.set(2012,4,16);
 			start=cal.getTime();
-			wTest=new Week(start);			
+			wTest=new Week(start);
 			assertTrue(weeksFl.get(4).equals(wTest));
+			assertEquals(1,weeksFl.get(0).getNumOfPeriod());
+			assertEquals(5,weeksFl.get(4).getNumOfPeriod());
 			
 			cal.set(2014,8,22);
 			start=cal.getTime();
@@ -70,6 +72,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			wTest=new Week(start);
 			assertTrue(weeksFl.get(10).equals(wTest));
+			assertEquals(11,weeksFl.get(10).getNumOfPeriod());
 			
 			cal.set(2015,0,13);
 			start=cal.getTime();
@@ -83,6 +86,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			wTest=new Week(start);			
 			assertTrue(weeksFl.get(3).equals(wTest));
+			assertEquals(4,weeksFl.get(3).getNumOfPeriod());
+			assertEquals(16,weeksTr.get(15).getNumOfPeriod());
 		
 			cal.set(2014,11,22);
 			start=cal.getTime();
@@ -96,6 +101,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			wTest=new Week(start);			
 			assertTrue(weeksFl.get(7).equals(wTest));
+			assertEquals(8,weeksFl.get(7).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
@@ -140,6 +146,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			fTest=new FortNight(start);			
 			assertTrue(fortNightsFl.get(2).equals(fTest));
+			assertEquals(3,fortNightsFl.get(2).getNumOfPeriod());
 			
 			cal.set(2014,7,16);
 			start=cal.getTime();
@@ -153,6 +160,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			fTest=new FortNight(start);	
 			assertTrue(fortNightsFl.get(12).equals(fTest));
+			assertEquals(13,fortNightsFl.get(12).getNumOfPeriod());
+			assertEquals(8,fortNightsTr.get(7).getNumOfPeriod());
 			
 			cal.set(2015,0,3);
 			start=cal.getTime();
@@ -166,6 +175,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			fTest=new FortNight(start);			
 			assertTrue(fortNightsFl.get(1).equals(fTest));
+			assertEquals(2,fortNightsFl.get(1).getNumOfPeriod());
 			
 			cal.set(2014,10,1);
 			start=cal.getTime();
@@ -179,6 +189,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			fTest=new FortNight(start);			
 			assertTrue(fortNightsFl.get(6).equals(fTest));
+			assertEquals(7,fortNightsFl.get(6).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
@@ -223,6 +234,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			mTest=new Month(start);			
 			assertTrue(monthsFl.get(12).equals(mTest));
+			assertEquals(13,monthsFl.get(12).getNumOfPeriod());
 			
 			cal.set(2014,7,1);
 			start=cal.getTime();
@@ -236,6 +248,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			mTest=new Month(start);	
 			assertTrue(monthsFl.get(6).equals(mTest));
+			assertEquals(7,monthsFl.get(6).getNumOfPeriod());
+			assertEquals(9,monthsTr.get(8).getNumOfPeriod());
 			
 			cal.set(2014,10,13);
 			start=cal.getTime();
@@ -249,6 +263,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			mTest=new Month(start);			
 			assertTrue(monthsFl.get(4).equals(mTest));
+			assertEquals(5,monthsFl.get(4).getNumOfPeriod());
 			
 			cal.set(2015,1,1);
 			start=cal.getTime();
@@ -262,6 +277,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			mTest=new Month(start);			
 			assertTrue(monthsFl.get(4).equals(mTest));
+			assertEquals(5,monthsFl.get(4).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
@@ -307,6 +323,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			bTest=new Bimester(start, false);
 			assertTrue(bimestersFl.get(6).equals(bTest));
+			assertEquals(7,bimestersFl.get(6).getNumOfPeriod());
 			
 			cal.set(2014,7,1);
 			start=cal.getTime();
@@ -320,6 +337,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			bTest=new Bimester(start, true);
 			assertTrue(bimestersFl.get(3).equals(bTest));
+			assertEquals(4,bimestersFl.get(3).getNumOfPeriod());
+			assertEquals(1,bimestersTr.get(0).getNumOfPeriod());
 			
 			cal.set(2014,10,13);
 			start=cal.getTime();
@@ -333,6 +352,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			bTest=new Bimester(start, false);	
 			assertTrue(bimestersFl.get(1).equals(bTest));
+			assertEquals(2,bimestersFl.get(1).getNumOfPeriod());
 			
 			cal.set(2014,5,1);
 			start=cal.getTime();
@@ -346,6 +366,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			bTest=new Bimester(start, true);
 			assertTrue(bimestersFl.get(2).equals(bTest));
+			assertEquals(3,bimestersFl.get(2).getNumOfPeriod());
+			assertEquals(1,bimestersTr.get(0).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
@@ -373,6 +395,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			tTest=new Trimester(start, false);
 			assertTrue(trimestersTr.get(9).equals(tTest));
+			assertEquals(10,trimestersTr.get(9).getNumOfPeriod());
 			
 			cal.set(2012,7,1);
 			start=cal.getTime();
@@ -386,6 +409,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			tTest=new Trimester(start, true);
 			assertTrue(trimestersFl.get(10).equals(tTest));
+			assertEquals(11,trimestersFl.get(10).getNumOfPeriod());
+			assertEquals(10,trimestersTr.get(9).getNumOfPeriod());
 			
 			cal.set(2012,11,13);
 			start=cal.getTime();
@@ -399,6 +424,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			tTest=new Trimester(start, false);	
 			assertTrue(trimestersFl.get(6).equals(tTest));
+			assertEquals(7,trimestersFl.get(6).getNumOfPeriod());
 			
 			cal.set(2013,5,1);
 			start=cal.getTime();
@@ -412,6 +438,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			tTest=new Trimester(start, true);
 			assertTrue(trimestersFl.get(5).equals(tTest));
+			assertEquals(6,trimestersTr.get(5).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
@@ -439,6 +466,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			sTest=new Semester(start, false);
 			assertTrue(semestersTr.get(7).equals(sTest));
+			assertEquals(8,semestersTr.get(7).getNumOfPeriod());
 			
 			cal.set(2012,2,1);
 			start=cal.getTime();
@@ -452,6 +480,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			sTest=new Semester(start, true);
 			assertTrue(semestersFl.get(5).equals(sTest));
+			assertEquals(6,semestersFl.get(5).getNumOfPeriod());
+			assertEquals(4,semestersTr.get(3).getNumOfPeriod());
 			
 			cal.set(2012,2,13);
 			start=cal.getTime();
@@ -465,6 +495,8 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			sTest=new Semester(start, false);	
 			assertTrue(semestersFl.get(4).equals(sTest));
+			assertEquals(5,semestersTr.get(4).getNumOfPeriod());
+			assertEquals(6,semestersTr.get(5).getNumOfPeriod());
 			
 			cal.set(2013,1,1);
 			start=cal.getTime();
@@ -478,6 +510,7 @@ public class CalculateIntervalsTests extends TestCase{
 			start=cal.getTime();
 			sTest=new Semester(start, true);
 			assertTrue(semestersFl.get(3).equals(sTest));
+			assertEquals(3,semestersTr.get(2).getNumOfPeriod());
 		} catch (CoatlTimeStartDateException e) {
 			// e.printStackTrace();
 		}
